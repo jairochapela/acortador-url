@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear nota volátil{% endblock %}
+
+{% block content %}
+    <h1>Acortador de URL</h1>
+    <form class="form" action="{{ url_for('crear_ruta') }}" method="POST">
+        <div class="form-group">
+            <label for="url">Escribe aquí el URL a acortar</label><br>
+            <input class="form-control" type="text" name="url" id="url" required><br>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Acortar URL">
+        <input class="btn btn-outline-secondary" type="reset" value="Limpiar">
+    </form>
+{% endblock %}

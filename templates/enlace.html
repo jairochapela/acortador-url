@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Enlace acortado{% endblock %}
+
+{% block content %}
+    <h1>Enlace acortado</h1>
+    <p>¡Tu enlace se ha acortado con éxito!</p>
+    <p>El enlace original es: <span class="text-primary url_original"><a href="{{ruta.url_original}}" target="blank">{{ruta.url_original|truncate(80,false,'...')}}</a></span></p>
+    <div class="form">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Ruta alternativa</label>
+        </div>
+
+        <div class="form-group pb-2">
+            <label for="codigo">Comparte este enlace con quien quieras:</label>
+            <input class="form-control" type="text" name="codigo" id="codigo" value="{{baseurl}}{{ url_for('ver_ruta', codigo=ruta.ruta_corta) }}" data-baseurl="{{baseurl}}" data-ruta_corta="{{url_for('ver_ruta', codigo=ruta.ruta_corta)}}" data-ruta_words="{{url_for('ver_ruta_words', codigo=ruta.ruta_words)}}" readonly>
+        </div>
+
+        <button class="btn btn-success" id="copy">Copiar al portapapeles</button>
+        <a class="btn btn-outline-secondary" href="{{ url_for('crear_ruta') }}">Ir al inicio</a>
+    </div>
+
+
+    <script>
+        document.getElementById("copy").onclick = function() {
+            document.getElementById("codigo").select();
+            document.execCommand('copy');
+        }
+
+        document.getElementById("flexSwitchCheckDefault").onclick = function() {
+            const elem_codigo = document.getElementById("codigo");
+            const baseurl = elem_codigo.dataset.baseurl;
+            const ruta_corta = elem_codigo.dataset.ruta_corta;
+            const ruta_words = elem_codigo.dataset.ruta_words;
+            if (document.getElementById("flexSwitchCheckDefault").checked) {
+                elem_codigo.value = baseurl + ruta_words;
+            } else {
+                elem_codigo.value = baseurl + ruta_corta;
+            }
+        }
+
+    </script>
+{% endblock %}

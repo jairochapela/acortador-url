@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        /* Background styles */
+        html {
+            background-color: black;
+        }
+        
+        body {
+            background-image: linear-gradient(302deg, rgba(162, 162, 162, 0.04) 0%, rgba(162, 162, 162, 0.04) 25%,rgba(156, 156, 156, 0.04) 25%, rgba(156, 156, 156, 0.04) 50%,rgba(52, 52, 52, 0.04) 50%, rgba(52, 52, 52, 0.04) 75%,rgba(75, 75, 75, 0.04) 75%, rgba(75, 75, 75, 0.04) 100%),linear-gradient(295deg, rgba(63, 63, 63, 0.04) 0%, rgba(63, 63, 63, 0.04) 25%,rgba(197, 197, 197, 0.04) 25%, rgba(197, 197, 197, 0.04) 50%,rgba(242, 242, 242, 0.04) 50%, rgba(242, 242, 242, 0.04) 75%,rgba(154, 154, 154, 0.04) 75%, rgba(154, 154, 154, 0.04) 100%),linear-gradient(253deg, rgba(73, 73, 73, 0.04) 0%, rgba(73, 73, 73, 0.04) 25%,rgba(100, 100, 100, 0.04) 25%, rgba(100, 100, 100, 0.04) 50%,rgba(240, 240, 240, 0.04) 50%, rgba(240, 240, 240, 0.04) 75%,rgba(126, 126, 126, 0.04) 75%, rgba(126, 126, 126, 0.04) 100%),linear-gradient(78deg, rgba(32, 32, 32, 0.04) 0%, rgba(32, 32, 32, 0.04) 25%,rgba(36, 36, 36, 0.04) 25%, rgba(36, 36, 36, 0.04) 50%,rgba(224, 224, 224, 0.04) 50%, rgba(224, 224, 224, 0.04) 75%,rgba(162, 162, 162, 0.04) 75%, rgba(162, 162, 162, 0.04) 100%),linear-gradient(90deg, rgb(252, 93, 34),rgb(215, 252, 30));            
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);            
+        }
+
+        /* Glassmorphism card effect */
+        @media screen and (min-width: 480px) {
+                
+            
+        .card {
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                background-color: rgba(255, 255, 255, 0.75);
+                border-radius: 12px;
+                border: 1px solid rgba(209, 213, 219, 0.3);
+                box-shadow: 4px 1px 8px;
+            }
+        }
+
+        a.url_original {
+            overflow: hidden;
+            overflow-wrap: ellipsis;                        
+
+        }
+
+        footer {
+            background: black;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<!-- As a link -->
+    <nav class="navbar navbar-dark bg-dark glass">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('crear_ruta') }}">Bobbitt</a>
+        </div>       
+    </nav>
+   
+    <main class="card container mt-4 mb-4 p-3">
+    <div class="card-body">{% block content %}{% endblock %}</div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
